@@ -34,20 +34,20 @@ class WordFinder:
 
 class SpecialWordFinder(WordFinder):
     '''Word finder that excludes blank lines&comments
-    
+
     >>> swf = SpecialWordFinder("complex.txt")
     3 words read
 
     >>> swf.random() in ["pear", "carrot", "kale"]
-    True
-
-    >>> swf.random() in ["pear", "carrot", "sprite"]
     False
 
-    >>> swf.random() in ["pear", "carrot", "kale"]
+    >>> swf.random() in ["apple", "parsnips", "kale"]
+    True
+
+    >>> swf.random() in ["parsnips", "mango", "kale"]
     True
     '''
     def parse(self, dict_file):
         '''parse dict_file -> list of words, skipping blanks and comments.'''
         return [w.strip() for w in dict_file
-            if w.strip() and not w.startswith("#")]
+                if w.strip() and not w.startswith("#")]
